@@ -8,9 +8,9 @@ interface Coordinates {
 }
 // TODO: Define a class for the Weather object
 class Weather {
-  public temp: number;
-  public wind: number;
-  public humidity: number;
+  temp: number;
+  wind: number;
+  humidity: number;
 
   constructor(temp: number, wind: number, humidity: number) {
     this.temp = temp;
@@ -78,6 +78,7 @@ class WeatherService {
     this.cityName = city;
     const coordinates = await this.fetchAndDestructureLocationData();
     const weatherData = await this.fetchWeatherData(coordinates);
+    console.log(weatherData);
     const currentWeather = this.parseCurrentWeather(weatherData);
     return this.buildForecastArray(currentWeather, weatherData.daily);
   }
